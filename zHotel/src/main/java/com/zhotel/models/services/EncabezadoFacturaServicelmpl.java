@@ -4,42 +4,42 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.zhotel.models.dao.ICategoriasDao;
-import com.zhotel.models.entity.Categorias;
+import com.zhotel.models.dao.IEncabezadoFacturaDao;
+import com.zhotel.models.entity.EncabezadoFactura;
+
 
 @Service
-public class CategoriasServicelmpl implements ICategoriasService {
-
+public class EncabezadoFacturaServicelmpl implements IEncabezadoFacturaService {
 
 
 	@Autowired
-	private ICategoriasDao canteDao;
+	private IEncabezadoFacturaDao encaDao;
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Categorias> findAll() {
+	public List<EncabezadoFactura> findAll() {
 
-		return (List<Categorias>) canteDao.findAll();
+		return (List<EncabezadoFactura>) encaDao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Categorias findById(Long id) {
+	public EncabezadoFactura findById(Long id) {
 		// TODO Auto-generated method stub
-		return canteDao.findById(id).orElse(null);
+		return encaDao.findById(id).orElse(null);
 	}
 
 	@Override
 	@Transactional
-	public Categorias save(Categorias cate) {
+	public EncabezadoFactura save(EncabezadoFactura enca) {
 		// TODO Auto-generated method stub
-		return canteDao.save(cate);
+		return encaDao.save(enca);
 	}
 
 	@Override
 	@Transactional
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
-		canteDao.deleteById(id);
+		encaDao.deleteById(id);
 	}
 }

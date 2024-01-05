@@ -4,42 +4,41 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.zhotel.models.dao.ICategoriasDao;
-import com.zhotel.models.entity.Categorias;
+import com.zhotel.models.dao.IReservasDao;
+import com.zhotel.models.entity.Reservas;
 
 @Service
-public class CategoriasServicelmpl implements ICategoriasService {
-
+public class ReservasServicelmpl implements IReservasService {
 
 
 	@Autowired
-	private ICategoriasDao canteDao;
+	private IReservasDao reserDao;
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Categorias> findAll() {
+	public List<Reservas> findAll() {
 
-		return (List<Categorias>) canteDao.findAll();
+		return (List<Reservas>) reserDao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Categorias findById(Long id) {
+	public Reservas findById(Long id) {
 		// TODO Auto-generated method stub
-		return canteDao.findById(id).orElse(null);
+		return reserDao.findById(id).orElse(null);
 	}
 
 	@Override
 	@Transactional
-	public Categorias save(Categorias cate) {
+	public Reservas save(Reservas enca) {
 		// TODO Auto-generated method stub
-		return canteDao.save(cate);
+		return reserDao.save(enca);
 	}
 
 	@Override
 	@Transactional
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
-		canteDao.deleteById(id);
+		reserDao.deleteById(id);
 	}
 }

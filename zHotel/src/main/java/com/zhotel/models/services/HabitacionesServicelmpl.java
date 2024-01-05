@@ -4,42 +4,41 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.zhotel.models.dao.ICategoriasDao;
-import com.zhotel.models.entity.Categorias;
+import com.zhotel.models.dao.IHabitacionesDao;
+import com.zhotel.models.entity.Habitaciones;
 
 @Service
-public class CategoriasServicelmpl implements ICategoriasService {
-
+public class HabitacionesServicelmpl implements IHabitacionesService {
 
 
 	@Autowired
-	private ICategoriasDao canteDao;
+	private IHabitacionesDao habiDao;
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Categorias> findAll() {
+	public List<Habitaciones> findAll() {
 
-		return (List<Categorias>) canteDao.findAll();
+		return (List<Habitaciones>) habiDao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Categorias findById(Long id) {
+	public Habitaciones findById(Long id) {
 		// TODO Auto-generated method stub
-		return canteDao.findById(id).orElse(null);
+		return habiDao.findById(id).orElse(null);
 	}
 
 	@Override
 	@Transactional
-	public Categorias save(Categorias cate) {
+	public Habitaciones save(Habitaciones enca) {
 		// TODO Auto-generated method stub
-		return canteDao.save(cate);
+		return habiDao.save(enca);
 	}
 
 	@Override
 	@Transactional
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
-		canteDao.deleteById(id);
+		habiDao.deleteById(id);
 	}
 }
