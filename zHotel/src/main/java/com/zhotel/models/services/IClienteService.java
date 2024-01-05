@@ -2,7 +2,8 @@ package com.zhotel.models.services;
 
 import java.util.List;
 
-import com.ista.springboot.app.entity.Cliente;
+import com.zhotel.models.entity.Cliente;
+
 
 public interface IClienteService {
 	
