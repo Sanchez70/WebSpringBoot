@@ -28,8 +28,15 @@ public class Persona {
 
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="cedula_persona")
+	private List<Cliente>cliente;
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="cedula_persona")
 	private List<Administrador>Administrador;
-		
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="cedula_persona")
+	private List<Recepcionista>recepcionista;
+	
 	public String getCedula_persona() {
 		return cedula_persona;
 	}

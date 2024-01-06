@@ -10,9 +10,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "reserva")
+@Table(name="reserva", uniqueConstraints = {@UniqueConstraint(columnNames= {"idRecepcionista","idHabitaciones","idCliente","idReserva"})})
 public class Reservas implements Serializable{
 	
 	/**
@@ -30,7 +31,7 @@ public class Reservas implements Serializable{
 	private Double total;
 	private Long idHabitaciones;
 	private Long idRecepcionista;
-	private String cedula_persona;
+	private Long idCliente;
 	private Integer dias;
 	private Integer nPersona;
 	private String estado;
@@ -76,11 +77,13 @@ public class Reservas implements Serializable{
 	public void setIdRecepcionista(Long idRecepcionista) {
 		this.idRecepcionista = idRecepcionista;
 	}
-	public String getCedula_persona() {
-		return cedula_persona;
+
+
+	public Long getIdCliente() {
+		return idCliente;
 	}
-	public void setCedula_persona(String cedula_persona) {
-		this.cedula_persona = cedula_persona;
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
 	}
 	public Integer getDias() {
 		return dias;

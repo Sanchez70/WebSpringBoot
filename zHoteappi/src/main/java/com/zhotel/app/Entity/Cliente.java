@@ -1,14 +1,20 @@
 package com.zhotel.app.Entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 @Entity
-@Table(name = "cliente")
+@Table(name="clientes", uniqueConstraints = {@UniqueConstraint(columnNames= {"cedula_persona","idCliente"})})
 public class Cliente implements Serializable{
 
 	
@@ -20,6 +26,10 @@ public class Cliente implements Serializable{
 	private String cedula_persona;
 	private String foto;
 	private static final long serialVersionUID = 1L;
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="idCliente")
+	private List<Reservas>Reservas;
 	public Long getIdCliente() {
 		return idCliente;
 	}
