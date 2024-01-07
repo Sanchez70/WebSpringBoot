@@ -9,9 +9,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "personas")
+@Table(name = "personas", uniqueConstraints = {@UniqueConstraint(columnNames= {"id_canton"})})
 public class Persona {
 	
 	@Id
@@ -24,7 +25,7 @@ public class Persona {
 	private String telefono;
 	private String direccion;
 	private int edad;
-	private String cod_canton;
+	private String id_canton;
 
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="cedula_persona")
@@ -91,12 +92,25 @@ public class Persona {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
-	public String getCod_canton() {
-		return cod_canton;
+	public String getId_canton() {
+		return id_canton;
 	}
-	public void setCod_canton(String cod_canton) {
-		this.cod_canton = cod_canton;
+	public void setId_canton(String id_canton) {
+		this.id_canton = id_canton;
 	}
+	public List<Cliente> getCliente() {
+		return cliente;
+	}
+	public void setCliente(List<Cliente> cliente) {
+		this.cliente = cliente;
+	}
+	public List<Recepcionista> getRecepcionista() {
+		return recepcionista;
+	}
+	public void setRecepcionista(List<Recepcionista> recepcionista) {
+		this.recepcionista = recepcionista;
+	}
+	
 
 	
 }

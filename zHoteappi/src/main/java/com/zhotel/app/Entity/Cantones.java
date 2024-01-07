@@ -1,9 +1,14 @@
 package com.zhotel.app.Entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
@@ -20,6 +25,10 @@ public class Cantones implements Serializable{
 	private String id_canton;
 	private String nombre;
 	private String id_provincia;
+	
+		@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+		@JoinColumn(name="id_canton")
+		private List<Persona> persona;
 	
 	public String getId_canton() {
 		return id_canton;
@@ -41,6 +50,13 @@ public class Cantones implements Serializable{
 	public void setId_provincia(String id_provincia) {
 		this.id_provincia = id_provincia;
 	}
+	public List<Persona> getPersona() {
+		return persona;
+	}
+	public void setPersona(List<Persona> persona) {
+		this.persona = persona;
+	}
+	
 	
 	
 }

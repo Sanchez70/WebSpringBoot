@@ -17,16 +17,16 @@ import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(name="habitaciones", uniqueConstraints = {@UniqueConstraint(columnNames= {"idCategoria","idHabitaciones"})})
-public class Habitaciones implements Serializable{
-	
-	
+public class Habitaciones implements Serializable{	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idHabitaciones;
+	
 	private Double precio;
 	private Integer nHabitacion;
 	private Integer nPiso;
@@ -35,6 +35,10 @@ public class Habitaciones implements Serializable{
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="idHabitaciones")
 	private List<Reservas>reservas;
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="idHabitaciones")
+	private List<Servicio> servicio;
 	
 	public Long getIdHabitaciones() {
 		return idHabitaciones;
@@ -65,6 +69,18 @@ public class Habitaciones implements Serializable{
 	}
 	public void setIdCategoria(Long idCategoria) {
 		this.idCategoria = idCategoria;
+	}
+	public List<Reservas> getReservas() {
+		return reservas;
+	}
+	public void setReservas(List<Reservas> reservas) {
+		this.reservas = reservas;
+	}
+	public List<Servicio> getServicio() {
+		return servicio;
+	}
+	public void setServicio(List<Servicio> servicio) {
+		this.servicio = servicio;
 	}
 	
 	
