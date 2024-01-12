@@ -18,7 +18,7 @@ import jakarta.persistence.TemporalType;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="reserva", uniqueConstraints = {@UniqueConstraint(columnNames= {"idRecepcionista","idHabitaciones","idCliente","idReserva"})})
+@Table(name="reserva", uniqueConstraints = {@UniqueConstraint(columnNames= {"idRecepcionista","idHabitaciones","idCliente","idPago","idReserva"})})
 public class Reservas implements Serializable{
 	
 	/**
@@ -28,7 +28,7 @@ public class Reservas implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idReserva;
-	private String metodoPago;
+	private Long idPago;
 	@Temporal(TemporalType.DATE)
 	private Date fechaSalida;
 	@Temporal(TemporalType.DATE)
@@ -51,11 +51,11 @@ public class Reservas implements Serializable{
 	public void setIdReserva(Long idReserva) {
 		this.idReserva = idReserva;
 	}
-	public String getMetodoPago() {
-		return metodoPago;
+	public Long getIdPago() {
+		return idPago;
 	}
-	public void setMetodoPago(String metodoPago) {
-		this.metodoPago = metodoPago;
+	public void setIdPago(Long idPago) {
+		this.idPago = idPago;
 	}
 	public Date getFechaSalida() {
 		return fechaSalida;
@@ -113,7 +113,11 @@ public class Reservas implements Serializable{
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	
-	
+	public List<EncabezadoFactura> getEncabezado() {
+		return encabezado;
+	}
+	public void setEncabezado(List<EncabezadoFactura> encabezado) {
+		this.encabezado = encabezado;
+	}
 
 }
