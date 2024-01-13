@@ -26,26 +26,26 @@ public class habitacionesController {
 @Autowired
 private IHabitacionesService HabitacionesSevice;
 //LISTAR Habitaciones
-@GetMapping("/Habitaciones")
+@GetMapping("/habitaciones")
 
 	public List<Habitaciones> index(){
 	return HabitacionesSevice.findAll();
 	
 }
 	//BUSCAR Habitaciones
-@GetMapping("/Habitaciones/{id}")
+@GetMapping("/habitaciones/{id}")
 public Habitaciones show(@PathVariable Long id) {
 	return HabitacionesSevice.findById(id);
 }
 //GUARDAR Habitaciones
 
-@PostMapping("/Habitaciones")
+@PostMapping("/habitaciones")
 @ResponseStatus(HttpStatus.CREATED)
 public Habitaciones create(@RequestBody Habitaciones Habitaciones) {
 	return HabitacionesSevice.save(Habitaciones);
 }
 //EDITAR Habitaciones
-@PutMapping("/Habitaciones/{id}")
+@PutMapping("/habitaciones/{id}")
 @ResponseStatus(HttpStatus.CREATED)
 public Habitaciones update(@RequestBody Habitaciones Habitaciones, @PathVariable Long id) {
 	Habitaciones HabitacionesActual = HabitacionesSevice.findById(id);
@@ -56,7 +56,7 @@ public Habitaciones update(@RequestBody Habitaciones Habitaciones, @PathVariable
 	return HabitacionesSevice.save(HabitacionesActual);
 }
 //ELIMINAR Habitaciones
-@DeleteMapping("/Habitaciones/{id}")
+@DeleteMapping("/habitaciones/{id}")
 @ResponseStatus(HttpStatus.NO_CONTENT)
 public void delete(@PathVariable Long id) {
 	HabitacionesSevice.delete(id);
