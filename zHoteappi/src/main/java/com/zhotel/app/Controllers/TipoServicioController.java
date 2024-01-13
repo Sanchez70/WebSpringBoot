@@ -26,23 +26,23 @@ public class TipoServicioController {
 	@Autowired
 	private ITipoServicioService tipoServicioService;
 
-	@GetMapping("/tipo_servicios")
+	@GetMapping("/tiposervicio")
 	public List<TipoServicio> index() {
 		return tipoServicioService.findAll();
 	}
 
-	@GetMapping("/tipo_servicios/{id}")
+	@GetMapping("/tiposervicio/{id}")
 	public TipoServicio show(@PathVariable Long id) {
 		return tipoServicioService.findById(id);
 	}
 
-	@PostMapping("/tipo_servicios")
+	@PostMapping("/tiposervicio")
 	@ResponseStatus(HttpStatus.CREATED)
 	public TipoServicio create(@RequestBody TipoServicio tipoServicio) {
 		return tipoServicioService.save(tipoServicio);
 	}
 
-	@PutMapping("/tipo_servicios/{id}")
+	@PutMapping("/tiposervicio/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public TipoServicio update(@RequestBody TipoServicio tipoServicio, @PathVariable Long id) {
 		TipoServicio tipoServicioActual = tipoServicioService.findById(id);
@@ -52,7 +52,7 @@ public class TipoServicioController {
 		return tipoServicioService.save(tipoServicioActual);
 	}
 
-	@DeleteMapping("/tipo_servicios/{id}")
+	@DeleteMapping("/tiposervicio/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		tipoServicioService.delete(id);
