@@ -46,7 +46,9 @@ public class TipoServicioController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public TipoServicio update(@RequestBody TipoServicio tipoServicio, @PathVariable Long id) {
 		TipoServicio tipoServicioActual = tipoServicioService.findById(id);
+		tipoServicioActual.setTitulo(tipoServicio.getTitulo());
 		tipoServicioActual.setDescripcion(tipoServicio.getDescripcion());
+		tipoServicioActual.setFoto(tipoServicio.getFoto());
 		return tipoServicioService.save(tipoServicioActual);
 	}
 

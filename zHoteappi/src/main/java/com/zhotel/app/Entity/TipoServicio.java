@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -24,31 +25,53 @@ public class TipoServicio implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTipo_servicio;
+	private String titulo;
 	private String descripcion;
+	@Column(name = "foto", columnDefinition = "TEXT")
+	private String foto;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="idTipo_Servicio")
 	private List<Servicio> servicio;
-	
+
 	public Long getIdTipo_servicio() {
 		return idTipo_servicio;
 	}
+
 	public void setIdTipo_servicio(Long idTipo_servicio) {
 		this.idTipo_servicio = idTipo_servicio;
 	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
 	public List<Servicio> getServicio() {
 		return servicio;
 	}
+
 	public void setServicio(List<Servicio> servicio) {
 		this.servicio = servicio;
 	}
 	
-	
-
 }
