@@ -26,26 +26,26 @@ public class clientesController {
 	@Autowired
 	private IClienteService ClienteSevice;
 	//LISTAR Cliente
-	@GetMapping("/Clientes")
+	@GetMapping("/clientes")
 
 		public List<Cliente> index(){
 		return ClienteSevice.findAll();
 		
 	}
 		//BUSCAR Cliente
-	@GetMapping("/Clientes/{id}")
+	@GetMapping("/clientes/{id}")
 	public Cliente show(@PathVariable Long id) {
 		return ClienteSevice.findById(id);
 	}
 	//GUARDAR Cliente
 
-	@PostMapping("/Clientes")
+	@PostMapping("/clientes")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente create(@RequestBody Cliente Cliente) {
 		return ClienteSevice.save(Cliente);
 	}
 	//EDITAR Cliente
-	@PutMapping("/Clientes/{id}")
+	@PutMapping("/clientes/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente update(@RequestBody Cliente Cliente, @PathVariable Long id) {
 		Cliente ClienteActual = ClienteSevice.findById(id);
@@ -56,7 +56,7 @@ public class clientesController {
 		return ClienteSevice.save(ClienteActual);
 	}
 	//ELIMINAR Cliente
-	@DeleteMapping("/Clientes/{id}")
+	@DeleteMapping("/clientes/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		ClienteSevice.delete(id);
