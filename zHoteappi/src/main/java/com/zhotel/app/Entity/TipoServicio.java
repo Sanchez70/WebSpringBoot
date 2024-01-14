@@ -29,7 +29,7 @@ public class TipoServicio implements Serializable{
 	private String descripcion;
 	@Column(name = "foto", columnDefinition = "TEXT")
 	private String foto;
-	
+	//sabjkdgadsi valor prueba....
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="idTipo_Servicio")
 	private List<Servicio> servicio;
