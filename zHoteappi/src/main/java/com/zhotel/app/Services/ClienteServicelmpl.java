@@ -41,4 +41,11 @@ public class ClienteServicelmpl implements IClienteService {
 		// TODO Auto-generated method stub
 		cliDao.deleteById(id);
 	}
+
+
+	@Override
+	public List<Cliente> getBooksByTitle(String usuario) {
+		// TODO Auto-generated method stub
+		return cliDao.findByUsuarioContainingIgnoreCase(usuario);
+	}
 }
