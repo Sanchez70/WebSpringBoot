@@ -4,7 +4,10 @@ import java.util.List;
 
 import com.zhotel.app.Entity.Administrador;
 
+
 public interface IAdministradorService {
+	
+	List<Administrador> getBooksByTitle(String usuario);
 	
 	public List<Administrador> findAll();
 	

@@ -43,5 +43,11 @@ public class AdministradorServicelmpl implements IAdministradorService {
 		adminDao.deleteById(id);
 	}
 
+	@Override
+	public List<Administrador> getBooksByTitle(String usuario) {
+		// TODO Auto-generated method stub
+		return adminDao.findByUsuarioContainingIgnoreCase(usuario);
+	}
+
 
 }

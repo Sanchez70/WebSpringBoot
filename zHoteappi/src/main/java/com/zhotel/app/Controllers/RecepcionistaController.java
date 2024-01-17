@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zhotel.app.Entity.Cliente;
 import com.zhotel.app.Entity.Recepcionista;
 import com.zhotel.app.Services.IRecepcionistaService;
 
@@ -56,5 +58,27 @@ public class RecepcionistaController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		recepcionistaService.delete(id);
+	}
+	
+	@GetMapping("/recepcionistas/usuario/{usuario}")
+	public ResponseEntity<?> getClientes(@PathVariable String usuario) {
+	 try {
+	        Long id = Long.parseLong(usuario);
+	        Recepcionista recep = recepcionistaService.findById(id);
+	        
+	        if (recep != null) {
+	            return new ResponseEntity<>(recep, HttpStatus.OK);
+	        } else {
+	            return new ResponseEntity<>("Cliente no encontrado", HttpStatus.NOT_FOUND);
+	        }
+	    } catch (NumberFormatException e) {
+	        List<Recepcionista> receps = recepcionistaService.getBooksByTitle(usuario);
+	        
+	        if (!receps.isEmpty()) {
+	            return new ResponseEntity<>(receps, HttpStatus.OK);
+	        } else {
+	            return new ResponseEntity<>("Clientes no encontrados", HttpStatus.NOT_FOUND);
+	        }
+	    }
 	}
 }

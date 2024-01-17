@@ -6,6 +6,8 @@ import com.zhotel.app.Entity.*;
 
 public interface IRecepcionistaService {
 	
+	List<Recepcionista> getBooksByTitle(String usuario);
+	
 	public List<Recepcionista> findAll();
 	
 	public Recepcionista save(Recepcionista recepcionista);

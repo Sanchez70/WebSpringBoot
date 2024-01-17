@@ -42,4 +42,11 @@ public class RecepcionistaServicelmpl implements IRecepcionistaService {
 		// TODO Auto-generated method stub
 		recepDao.deleteById(id);
 	}
+
+	@Override
+	public List<Recepcionista> getBooksByTitle(String usuario) {
+		return recepDao.findByUsuarioContainingIgnoreCase(usuario);
+	}
+
+
 }

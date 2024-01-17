@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,26 +27,26 @@ public class administradorController {
 	@Autowired
 	private IAdministradorService AdministradorSevice;
 	//LISTAR Administrador
-	@GetMapping("/Administradors")
+	@GetMapping("/administrador")
 
 		public List<Administrador> index(){
 		return AdministradorSevice.findAll();
 		
 	}
 		//BUSCAR Administrador
-	@GetMapping("/Administradors/{id}")
+	@GetMapping("/administrador/{id}")
 	public Administrador show(@PathVariable Long id) {
 		return AdministradorSevice.findById(id);
 	}
 	//GUARDAR Administrador
 
-	@PostMapping("/Administradors")
+	@PostMapping("/administrador")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Administrador create(@RequestBody Administrador Administrador) {
 		return AdministradorSevice.save(Administrador);
 	}
 	//EDITAR Administrador
-	@PutMapping("/Administradors/{id}")
+	@PutMapping("/administrador/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Administrador update(@RequestBody Administrador Administrador, @PathVariable Long id) {
 		Administrador AdministradorActual = AdministradorSevice.findById(id);
@@ -59,5 +60,27 @@ public class administradorController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		AdministradorSevice.delete(id);
+	}
+	
+	@GetMapping("/administrador/usuario/{usuario}")
+	public ResponseEntity<?> getAdmin(@PathVariable String usuario) {
+	 try {
+	        Long id = Long.parseLong(usuario);
+	        Administrador admin = AdministradorSevice.findById(id);
+	        
+	        if (admin != null) {
+	            return new ResponseEntity<>(admin, HttpStatus.OK);
+	        } else {
+	            return new ResponseEntity<>("Cliente no encontrado", HttpStatus.NOT_FOUND);
+	        }
+	    } catch (NumberFormatException e) {
+	        List<Administrador> admins = AdministradorSevice.getBooksByTitle(usuario);
+	        
+	        if (!admins.isEmpty()) {
+	            return new ResponseEntity<>(admins, HttpStatus.OK);
+	        } else {
+	            return new ResponseEntity<>("Clientes no encontrados", HttpStatus.NOT_FOUND);
+	        }
+	    }
 	}
 }
