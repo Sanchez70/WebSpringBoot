@@ -52,6 +52,7 @@ public Habitaciones update(@RequestBody Habitaciones Habitaciones, @PathVariable
 	HabitacionesActual.setnHabitacion(Habitaciones.getnHabitacion());
 	HabitacionesActual.setnPiso(Habitaciones.getnPiso());
 	HabitacionesActual.setPrecio(Habitaciones.getPrecio());
+	HabitacionesActual.setDescriphabi(Habitaciones.getDescriphabi());
 	
 	return HabitacionesSevice.save(HabitacionesActual);
 }

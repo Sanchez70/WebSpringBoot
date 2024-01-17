@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="cantones", uniqueConstraints = {@UniqueConstraint(columnNames= {"id_provincia"})})
+@Table(name="cantones", uniqueConstraints = {@UniqueConstraint(columnNames= {"id_canton","id_provincia"})})
 public class Cantones implements Serializable{
 	
 	/**

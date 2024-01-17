@@ -16,8 +16,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tiposervicio")
-public class TipoServicio implements Serializable{
-	
+public class TipoServicio implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -26,12 +26,12 @@ public class TipoServicio implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTipo_servicio;
 	private String titulo;
-	private String descripcion;
+	private String descripciontipo;
 	@Column(name = "foto", columnDefinition = "TEXT")
 	private String foto;
-	//sabjkdgadsi valor prueba....
-	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="idTipo_Servicio")
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "idTipo_Servicio")
 	private List<Servicio> servicio;
 
 	public Long getIdTipo_servicio() {
@@ -50,12 +50,12 @@ public class TipoServicio implements Serializable{
 		this.titulo = titulo;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescripciontipo() {
+		return descripciontipo;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescripciontipo(String descripciontipo) {
+		this.descripciontipo = descripciontipo;
 	}
 
 	public String getFoto() {
@@ -73,5 +73,5 @@ public class TipoServicio implements Serializable{
 	public void setServicio(List<Servicio> servicio) {
 		this.servicio = servicio;
 	}
-	
+
 }
