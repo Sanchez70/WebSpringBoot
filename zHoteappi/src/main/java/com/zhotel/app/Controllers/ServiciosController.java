@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zhotel.app.Entity.Servicio;
 import com.zhotel.app.Services.IServicioService;
 
-@CrossOrigin(origins= {"http://localhost:4200"})
+@CrossOrigin(origins= {"http://localhost:4200","http://192.168.40.228:8081"})
 @RestController
 @RequestMapping("/api")
 public class ServiciosController {

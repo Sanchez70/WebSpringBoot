@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,32 +20,32 @@ import com.zhotel.app.Services.*;
 import com.zhotel.app.Entity.*;
 
 
-@CrossOrigin(origins= {"http://localhost:4200"})
+@CrossOrigin(origins= {"http://localhost:4200","http://192.168.40.228:8081"})
 @RestController
 @RequestMapping("/api")
 public class clientesController {
 	@Autowired
 	private IClienteService ClienteSevice;
-	//LISTAR Cliente
+	//LISTAR_Cliente
 	@GetMapping("/clientes")
 
 		public List<Cliente> index(){
 		return ClienteSevice.findAll();
 		
 	}
-		//BUSCAR Cliente
+		//BUSCAR_Cliente
 	@GetMapping("/clientes/{id}")
 	public Cliente show(@PathVariable Long id) {
 	return ClienteSevice.findById(id);
 	}
-	//GUARDAR Cliente
+	//GUARDAR_Cliente
 
 	@PostMapping("/clientes")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente create(@RequestBody Cliente Cliente) {
 		return ClienteSevice.save(Cliente);
 	}
-	//EDITAR Cliente
+	//EDITAR_Cliente
 	@PutMapping("/clientes/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente update(@RequestBody Cliente Cliente, @PathVariable Long id) {
@@ -57,7 +56,7 @@ public class clientesController {
 		
 		return ClienteSevice.save(ClienteActual);
 	}
-	//ELIMINAR Cliente
+	//ELIMINAR_Cliente
 	@DeleteMapping("/clientes/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {

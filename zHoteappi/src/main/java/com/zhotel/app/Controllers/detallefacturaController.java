@@ -19,7 +19,7 @@ import com.zhotel.app.Services.*;
 import com.zhotel.app.Entity.*;
 
 
-@CrossOrigin(origins= {"http://localhost:4200"})
+@CrossOrigin(origins= {"http://localhost:4200","http://192.168.40.228:8081"})
 @RestController
 @RequestMapping("/api")
 public class detallefacturaController {
