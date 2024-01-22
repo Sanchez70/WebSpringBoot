@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "detallefactura", uniqueConstraints = {@UniqueConstraint(columnNames= {"idEncabezado", "idReserva"})})
+@Table(name = "detallefactura", uniqueConstraints = {@UniqueConstraint(columnNames= {"idEncabezado", "idDetalleFac"})})
 public class detalleFactura implements Serializable{
 	
 	/**
@@ -20,7 +20,6 @@ public class detalleFactura implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idDetalleFac;
-	private Long idReserva;
 	private Double subTotal;
 	private Long idEncabezado;
 	public Long getIdDetalleFac() {
@@ -29,12 +28,7 @@ public class detalleFactura implements Serializable{
 	public void setIdDetalleFac(Long idDetalleFac) {
 		this.idDetalleFac = idDetalleFac;
 	}
-	public Long getIdReserva() {
-		return idReserva;
-	}
-	public void setIdReserva(Long idReserva) {
-		this.idReserva = idReserva;
-	}
+	
 	public Double getSubTotal() {
 		return subTotal;
 	}

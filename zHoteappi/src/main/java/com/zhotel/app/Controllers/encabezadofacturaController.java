@@ -18,33 +18,33 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zhotel.app.Services.*;
 import com.zhotel.app.Entity.*;
 
-@CrossOrigin(origins= {"http://localhost:4200","http://192.168.40.228:8081"})
+@CrossOrigin(origins= {"http://localhost:4200","http://192.168.100.6:8081"})
 @RestController
 @RequestMapping("/api")
 public class encabezadofacturaController {
 	@Autowired
 	private IEncabezadoFacturaService EncabezadoFacturaSevice;
 	//LISTAR EncabezadoFactura
-	@GetMapping("/EncabezadoFacturas")
+	@GetMapping("/encabezadofactura")
 
 		public List<EncabezadoFactura> index(){
 		return EncabezadoFacturaSevice.findAll();
 		
 	}
 		//BUSCAR EncabezadoFactura
-	@GetMapping("/EncabezadoFacturas/{id}")
+	@GetMapping("/encabezadofactura/{id}")
 	public EncabezadoFactura show(@PathVariable Long id) {
 		return EncabezadoFacturaSevice.findById(id);
 	}
 	//GUARDAR EncabezadoFactura
 
-	@PostMapping("/EncabezadoFacturas")
+	@PostMapping("/encabezadofactura")
 	@ResponseStatus(HttpStatus.CREATED)
 	public EncabezadoFactura create(@RequestBody EncabezadoFactura EncabezadoFactura) {
 		return EncabezadoFacturaSevice.save(EncabezadoFactura);
 	}
 	//EDITAR EncabezadoFactura
-	@PutMapping("/EncabezadoFacturas/{id}")
+	@PutMapping("/encabezadofactura/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public EncabezadoFactura update(@RequestBody EncabezadoFactura EncabezadoFactura, @PathVariable Long id) {
 		EncabezadoFactura EncabezadoFacturaActual = EncabezadoFacturaSevice.findById(id);
@@ -54,7 +54,7 @@ public class encabezadofacturaController {
 		return EncabezadoFacturaSevice.save(EncabezadoFacturaActual);
 	}
 	//ELIMINAR EncabezadoFactura
-	@DeleteMapping("/EncabezadoFacturas/{id}")
+	@DeleteMapping("/encabezadofactura/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		EncabezadoFacturaSevice.delete(id);

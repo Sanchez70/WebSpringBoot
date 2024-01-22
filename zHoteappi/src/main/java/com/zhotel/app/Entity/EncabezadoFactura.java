@@ -18,7 +18,7 @@ import jakarta.persistence.TemporalType;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "encabezadofactura", uniqueConstraints = {@UniqueConstraint(columnNames= {"idReserva"})})
+@Table(name = "encabezadofactura", uniqueConstraints = {@UniqueConstraint(columnNames= {"idEncabezado","idReserva"})})
 public class EncabezadoFactura implements Serializable {
 	
 	/**
@@ -28,13 +28,14 @@ public class EncabezadoFactura implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idEncabezado;
-	private String cedula_persona;
+	private Long idCliente;
+	private Long idReserva;
 	@Temporal(TemporalType.DATE)
 	private Date fechaFactura;
 	private Double total;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="idDetalleFac")
+	@JoinColumn(name="idEncabezado")
 	private List<detalleFactura> detalleFac;
 	
 	public Long getIdEncabezado() {
@@ -43,11 +44,12 @@ public class EncabezadoFactura implements Serializable {
 	public void setIdEncabezado(Long idEncabezado) {
 		this.idEncabezado = idEncabezado;
 	}
-	public String getCedula_persona() {
-		return cedula_persona;
+	
+	public Long getIdCliente() {
+		return idCliente;
 	}
-	public void setCedula_persona(String cedula_persona) {
-		this.cedula_persona = cedula_persona;
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
 	}
 	public Date getFechaFactura() {
 		return fechaFactura;
@@ -66,6 +68,12 @@ public class EncabezadoFactura implements Serializable {
 	}
 	public void setDetalleFac(List<detalleFactura> detalleFac) {
 		this.detalleFac = detalleFac;
+	}
+	public Long getIdReserva() {
+		return idReserva;
+	}
+	public void setIdReserva(Long idReserva) {
+		this.idReserva = idReserva;
 	}
 	
 	

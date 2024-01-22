@@ -51,11 +51,7 @@
 			<artifactId>ProyectoM4A-3</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>com.ista.clinica</groupId>
-			<artifactId>Clinica</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+	
 	</dependencies>
 
 	<build>
