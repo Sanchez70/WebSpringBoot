@@ -26,6 +26,9 @@ import com.zhotel.app.Entity.*;
 public class clientesController {
 	@Autowired
 	private IClienteService ClienteSevice;
+	@Autowired
+	private NotificationService notificationService;
+
 	//LISTAR_Cliente
 	@GetMapping("/clientes")
 
@@ -38,13 +41,16 @@ public class clientesController {
 	public Cliente show(@PathVariable Long id) {
 	return ClienteSevice.findById(id);
 	}
+	
 	//GUARDAR_Cliente
-
 	@PostMapping("/clientes")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente create(@RequestBody Cliente Cliente) {
-		return ClienteSevice.save(Cliente);
+	    Cliente savedCliente = ClienteSevice.save(Cliente);
+	    notificationService.sendWelcomeEmail(savedCliente.getUsuario());
+	    return savedCliente;
 	}
+
 	//EDITAR_Cliente
 	@PutMapping("/clientes/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
@@ -52,8 +58,7 @@ public class clientesController {
 		Cliente ClienteActual = ClienteSevice.findById(id);
 		ClienteActual.setContrasena(Cliente.getContrasena());
 		ClienteActual.setFoto(Cliente.getFoto());
-		ClienteActual.setUsuario(Cliente.getUsuario());
-		
+		ClienteActual.setUsuario(Cliente.getUsuario());	
 		return ClienteSevice.save(ClienteActual);
 	}
 	//ELIMINAR_Cliente

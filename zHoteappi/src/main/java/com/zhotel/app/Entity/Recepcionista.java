@@ -14,7 +14,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 @Entity
-@Table(name="recepcionista", uniqueConstraints = {@UniqueConstraint(columnNames= {"cedula_persona","idRecepcionista"})})
+@Table(name="recepcionistas", uniqueConstraints = {@UniqueConstraint(columnNames= {"cedula_persona","idRecepcionista"})})
 public class Recepcionista  implements Serializable{
 	
 	/**

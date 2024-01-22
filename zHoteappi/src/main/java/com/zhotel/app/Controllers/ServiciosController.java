@@ -25,23 +25,23 @@ public class ServiciosController {
 	@Autowired
 	private IServicioService servicioService;
 
-	@GetMapping("/servicios")
+	@GetMapping("/servicio")
 	public List<Servicio> index() {
 		return servicioService.findAll();
 	}
 
-	@GetMapping("/servicios/{id}")
+	@GetMapping("/servicio/{id}")
 	public Servicio show(@PathVariable Long id) {
 		return servicioService.findById(id);
 	}
 
-	@PostMapping("/servicios")
+	@PostMapping("/servicio")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Servicio create(@RequestBody Servicio servicio) {
 		return servicioService.save(servicio);
 	}
 
-	@PutMapping("/servicios/{id}")
+	@PutMapping("/servicio/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Servicio update(@RequestBody Servicio servicio, @PathVariable Long id) {
 		Servicio servicioActual = servicioService.findById(id);
@@ -51,7 +51,7 @@ public class ServiciosController {
 		return servicioService.save(servicioActual);
 	}
 
-	@DeleteMapping("/servicios/{id}")
+	@DeleteMapping("/servicio/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		servicioService.delete(id);
