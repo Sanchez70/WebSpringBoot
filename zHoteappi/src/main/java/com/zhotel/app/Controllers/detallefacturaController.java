@@ -19,33 +19,33 @@ import com.zhotel.app.Services.*;
 import com.zhotel.app.Entity.*;
 
 
-@CrossOrigin(origins= {"http://localhost:4200","http://192.168.100.6:8081"})
+@CrossOrigin(origins= {"http://localhost:4200","http://192.168.137.19:8081"})
 @RestController
 @RequestMapping("/api")
 public class detallefacturaController {
 	@Autowired
 	private IDetalleFacturaService detalleFacturaSevice;
 	//LISTAR detalleFactura
-	@GetMapping("/detalleFacturas")
+	@GetMapping("/detallefactura")
 
 		public List<detalleFactura> index(){
 		return detalleFacturaSevice.findAll();
 		
 	}
 		//BUSCAR detalleFactura
-	@GetMapping("/detalleFacturas/{id}")
+	@GetMapping("/detallefactura/{id}")
 	public detalleFactura show(@PathVariable Long id) {
 		return detalleFacturaSevice.findById(id);
 	}
 	//GUARDAR detalleFactura
 
-	@PostMapping("/detalleFacturas")
+	@PostMapping("/detallefactura")
 	@ResponseStatus(HttpStatus.CREATED)
 	public detalleFactura create(@RequestBody detalleFactura detalleFactura) {
 		return detalleFacturaSevice.save(detalleFactura);
 	}
 	//EDITAR detalleFactura
-	@PutMapping("/detalleFacturas/{id}")
+	@PutMapping("/detallefactura/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public detalleFactura update(@RequestBody detalleFactura detalleFactura, @PathVariable Long id) {
 		detalleFactura detalleFacturaActual = detalleFacturaSevice.findById(id);
@@ -54,7 +54,7 @@ public class detallefacturaController {
 		return detalleFacturaSevice.save(detalleFacturaActual);
 	}
 	//ELIMINAR detalleFactura
-	@DeleteMapping("/detalleFacturas/{id}")
+	@DeleteMapping("/detallefactura/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		detalleFacturaSevice.delete(id);

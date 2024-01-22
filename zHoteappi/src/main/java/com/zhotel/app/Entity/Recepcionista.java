@@ -30,7 +30,7 @@ public class Recepcionista  implements Serializable{
 	private Double sueldo;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="idReserva")
+	@JoinColumn(name="idRecepcionista")
 	private List<Reservas>Reservas;
 	
 	public Long getIdRecepcionista() {
