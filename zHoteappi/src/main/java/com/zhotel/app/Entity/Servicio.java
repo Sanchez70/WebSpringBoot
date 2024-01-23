@@ -11,7 +11,7 @@ import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "servicio", uniqueConstraints = {
-		@UniqueConstraint(columnNames = { "idTipo_Servicio", "idHabitaciones", "idServicio" }) })
+		@UniqueConstraint(columnNames = { "idTipo_servicio", "idHabitaciones", "idServicio" }) })
 public class Servicio implements Serializable {
 
 	/**

@@ -31,7 +31,7 @@ public class TipoServicio implements Serializable {
 	private String foto;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "idTipo_Servicio")
+	@JoinColumn(name = "idTipo_servicio")
 	private List<Servicio> servicio;
 
 	public Long getIdTipo_servicio() {
