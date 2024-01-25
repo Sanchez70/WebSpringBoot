@@ -20,7 +20,7 @@ import com.zhotel.app.Services.IPersonaService;
 
 
 
-@CrossOrigin(origins= {"http://localhost:4200","http://192.168.137.19:8081"})
+@CrossOrigin(origins= {"http://localhost:4200","http://192.168.40.228:8081","http://192.168.0.119:8081","http://192.168.19.119:8081"})
 @RestController
 @RequestMapping("/api")
 public class PersonasController {
@@ -53,6 +53,7 @@ public class PersonasController {
 		personaActual.setApellido2(persona.getApellido2());
 		personaActual.setDireccion(persona.getDireccion());
 		personaActual.setTelefono(persona.getTelefono());
+		personaActual.setEdad(persona.getEdad());
 		return personaService.save(personaActual);
 	}
 

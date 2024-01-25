@@ -19,8 +19,7 @@ import com.zhotel.app.Entity.Reservas;
 import com.zhotel.app.Services.IReservasService;
 
 
-
-@CrossOrigin(origins= {"http://localhost:4200","http://192.168.137.19:8081"})
+@CrossOrigin(origins= {"http://localhost:4200","http://192.168.40.228:8081","http://192.168.0.119:8081","http://192.168.19.119:8081"})
 @RestController
 @RequestMapping("/api")
 public class ReservasController {

@@ -3,7 +3,6 @@ package com.zhotel.app.Entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,7 +32,7 @@ public class EncabezadoFactura implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fechaFactura;
 	private Double total;
-	
+	 
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="idEncabezado")
 	private List<detalleFactura> detalleFac;

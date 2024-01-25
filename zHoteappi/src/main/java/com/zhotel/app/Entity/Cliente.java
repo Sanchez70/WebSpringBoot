@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +25,7 @@ public class Cliente implements Serializable{
 	private String usuario;
 	private String contrasena;
 	private String cedula_persona;
+	@Column(name = "foto", columnDefinition = "TEXT")
 	private String foto;
 	private static final long serialVersionUID = 1L;
 	

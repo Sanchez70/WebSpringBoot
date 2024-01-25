@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +22,14 @@ import com.zhotel.app.Services.*;
 import com.zhotel.app.Entity.*;
 
 
-@CrossOrigin(origins= {"http://localhost:4200","http://192.168.137.19:8081"})
+@CrossOrigin(origins= {"http://localhost:4200","http://192.168.40.228:8081","http://192.168.0.119:8081","http://192.168.19.119:8081"})
 @RestController
 @RequestMapping("/api")
 public class clientesController {
 	@Autowired
 	private IClienteService ClienteSevice;
 	@Autowired
-	private NotificationService notificationService;
+    private JavaMailSender javaMailSender;
 
 	//LISTAR_Cliente
 	@GetMapping("/clientes")
@@ -44,13 +46,16 @@ public class clientesController {
 	
 	//GUARDAR_Cliente
 	@PostMapping("/clientes")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente create(@RequestBody Cliente Cliente) {
-	    Cliente savedCliente = ClienteSevice.save(Cliente);
-	    notificationService.sendWelcomeEmail(savedCliente.getUsuario());
-	    return savedCliente;
-	}
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cliente create(@RequestBody Cliente cliente) {
+        // Guardar_el cliente_en la_base_de_datos
+        Cliente savedCliente = ClienteSevice.save(cliente);
+        sendWelcomeEmail(savedCliente.getUsuario());
+        return savedCliente;
+    }
 
+	
+	
 	//EDITAR_Cliente
 	@PutMapping("/clientes/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
@@ -90,4 +95,12 @@ public class clientesController {
 	    }
 	}
 	
+	
+	private void sendWelcomeEmail(String toEmail) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(toEmail);
+        message.setSubject("¡Bienvenido a nuestra aplicación!");
+        message.setText("Gracias por registrarte en nuestra aplicación. ¡Esperamos que disfrutes de nuestros servicios!");
+        javaMailSender.send(message);
+    }
 }
