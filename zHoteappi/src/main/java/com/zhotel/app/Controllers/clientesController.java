@@ -28,8 +28,6 @@ import com.zhotel.app.Entity.*;
 public class clientesController {
 	@Autowired
 	private IClienteService ClienteSevice;
-	@Autowired
-    private JavaMailSender javaMailSender;
 
 	//LISTAR_Cliente
 	@GetMapping("/clientes")
@@ -48,10 +46,7 @@ public class clientesController {
 	@PostMapping("/clientes")
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente create(@RequestBody Cliente cliente) {
-        // Guardar_el cliente_en la_base_de_datos
-        Cliente savedCliente = ClienteSevice.save(cliente);
-        sendWelcomeEmail(savedCliente.getUsuario());
-        return savedCliente;
+        return ClienteSevice.save(cliente);
     }
 
 	
@@ -94,13 +89,5 @@ public class clientesController {
 	        }
 	    }
 	}
-	
-	
-	private void sendWelcomeEmail(String toEmail) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(toEmail);
-        message.setSubject("¡Bienvenido a nuestra aplicación!");
-        message.setText("Gracias por registrarte en nuestra aplicación. ¡Esperamos que disfrutes de nuestros servicios!");
-        javaMailSender.send(message);
-    }
+			
 }
