@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +26,7 @@ import com.zhotel.app.Entity.*;
 public class clientesController {
 	@Autowired
 	private IClienteService ClienteSevice;
+
 
 	//LISTAR_Cliente
 	@GetMapping("/clientes")
@@ -89,5 +88,5 @@ public class clientesController {
 	        }
 	    }
 	}
-			
+	
 }
