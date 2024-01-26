@@ -1,4 +1,3 @@
-
 INSERT INTO `provincias`(`id_provincia`, `nombre`) VALUES ('01','Azuay');
 INSERT INTO `provincias`(`id_provincia`, `nombre`) VALUES ('02','Bolívar');
 INSERT INTO `provincias`(`id_provincia`, `nombre`) VALUES ('03','Cañar');
