@@ -55,7 +55,7 @@ public class administradorController {
 		return AdministradorSevice.save(AdministradorActual);
 	}
 	//ELIMINAR Administrador
-	@DeleteMapping("/Administradors/{id}")
+	@DeleteMapping("/administrador/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		AdministradorSevice.delete(id);

@@ -23,7 +23,6 @@ INSERT INTO `provincias`(`id_provincia`, `nombre`) VALUES ('22','Sucumbíos');
 INSERT INTO `provincias`(`id_provincia`, `nombre`) VALUES ('23','Tungurahua');
 INSERT INTO `provincias`(`id_provincia`, `nombre`) VALUES ('24','Zamora Chinchipe');
 
-
 INSERT INTO `cantones`(`id_canton`, `id_provincia`, `nombre`) VALUES ('0101','01','Cuenca');
 INSERT INTO `cantones`(`id_canton`, `id_provincia`, `nombre`) VALUES ('0102','01','Camilo Ponce Enríquez');
 INSERT INTO `cantones`(`id_canton`, `id_provincia`, `nombre`) VALUES ('0103','01','Chordeleg');
