@@ -26,26 +26,26 @@ public class categoriasController {
 @Autowired
 private ICategoriasService CategoriasSevice;
 //LISTAR Categorias
-@GetMapping("/Categoriass")
+@GetMapping("/categorias")
 
 	public List<Categorias> index(){
 	return CategoriasSevice.findAll();
 	
 }
 	//BUSCAR Categorias
-@GetMapping("/Categoriass/{id}")
+@GetMapping("/categorias/{id}")
 public Categorias show(@PathVariable Long id) {
 	return CategoriasSevice.findById(id);
 }
 //GUARDAR Categorias
 
-@PostMapping("/Categoriass")
+@PostMapping("/categorias")
 @ResponseStatus(HttpStatus.CREATED)
 public Categorias create(@RequestBody Categorias Categorias) {
 	return CategoriasSevice.save(Categorias);
 }
 //EDITAR Categorias
-@PutMapping("/Categoriass/{id}")
+@PutMapping("/categorias/{id}")
 @ResponseStatus(HttpStatus.CREATED)
 public Categorias update(@RequestBody Categorias Categorias, @PathVariable Long id) {
 	Categorias CategoriasActual = CategoriasSevice.findById(id);
@@ -54,7 +54,7 @@ public Categorias update(@RequestBody Categorias Categorias, @PathVariable Long 
 	return CategoriasSevice.save(CategoriasActual);
 }
 //ELIMINAR Categorias
-@DeleteMapping("/Categoriass/{id}")
+@DeleteMapping("/categorias/{id}")
 @ResponseStatus(HttpStatus.NO_CONTENT)
 public void delete(@PathVariable Long id) {
 	CategoriasSevice.delete(id);
