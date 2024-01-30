@@ -53,7 +53,7 @@ public Habitaciones update(@RequestBody Habitaciones Habitaciones, @PathVariable
 	HabitacionesActual.setnPiso(Habitaciones.getnPiso());
 	HabitacionesActual.setPrecio(Habitaciones.getPrecio());
 	HabitacionesActual.setDescriphabi(Habitaciones.getDescriphabi());
-	
+	HabitacionesActual.setEstado(Habitaciones.getEstado());
 	return HabitacionesSevice.save(HabitacionesActual);
 }
 //ELIMINAR Habitaciones
