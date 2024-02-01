@@ -32,6 +32,7 @@ public class Habitaciones implements Serializable {
 	private Integer nHabitacion;
 	private Integer nPiso;
 	private Long idCategoria;
+	@Column(name = "descriphabi", columnDefinition = "TEXT")
 	private String descriphabi;
 	@Column(name = "foto", columnDefinition = "TEXT")
 	private String foto;
