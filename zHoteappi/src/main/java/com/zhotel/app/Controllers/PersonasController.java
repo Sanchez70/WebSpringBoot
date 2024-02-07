@@ -51,6 +51,7 @@ public class PersonasController {
 		personaActual.setNombre2(persona.getNombre2());
 		personaActual.setApellido(persona.getApellido());
 		personaActual.setApellido2(persona.getApellido2());
+		personaActual.setGenero(persona.getGenero());
 		personaActual.setDireccion(persona.getDireccion());
 		personaActual.setTelefono(persona.getTelefono());
 		personaActual.setEdad(persona.getEdad());
